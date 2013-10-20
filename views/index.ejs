@@ -23,6 +23,16 @@ $(document).ready(function () {
   };
   var setTotal = function (v) {
     $('#total').html(v);
+    if (v > 0) {
+      //var rect = $('#total').get(0).getBoundingClientRect();
+      var offset = $('#total').offset();
+      $('<div class="bubble">へぇ</div>')
+        .appendTo('body')
+        .css('position', 'absolute')
+        .css('top', offset.top - 30)
+        .css('left', offset.left - 18)
+        .animate({'top':'-=5px','opacity':'hide'}, {duration:'slow', easing:'swing'});      
+    }
   };
   var countUp = function () {
     setCount(count + 1);
@@ -56,5 +66,6 @@ $(document).ready(function () {
       <span></span>
       <span id="total">0</span>
     </p>
+
   </body>
 </html>

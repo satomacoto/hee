@@ -3,3 +3,35 @@ body
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
 a
   color: #00B7FF
+.bubble 
+  position: relative;
+  width: 40px;
+  height: 20px;
+  padding: 0px;
+  background: #FFFFFF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: #7F7F7F solid 2px;
+.bubble:after 
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  border-color: #FFFFFF transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  bottom: -5px;
+  left: 15px;
+.bubble:before 
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 6px 6px 0;
+  border-color: #7F7F7F transparent;
+  display: block;
+  width: 0;
+  z-index: 0;
+  bottom: -8px;
+  left: 14px;

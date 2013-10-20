@@ -5,3 +5,38 @@ body {
 a {
   color: #00b7ff;
 }
+.bubble {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  padding: 0px;
+  background: #fff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: #7f7f7f solid 2px;
+}
+.bubble:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  border-color: #fff transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  bottom: -5px;
+  left: 15px;
+}
+.bubble:before {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 6px 6px 0;
+  border-color: #7f7f7f transparent;
+  display: block;
+  width: 0;
+  z-index: 0;
+  bottom: -8px;
+  left: 14px;
+}
