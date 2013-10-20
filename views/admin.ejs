@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/buttons.css">
+     
+    <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="/javascripts/buttons.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+$(document).ready(function () {
+  var socket = io.connect(window.location.hostname);
+  $('#reset').click(function () {
+    socket.emit('reset');
+  });
+});
+    </script>
+  </head>
+  <body>
+    <h1>Admin</h1>
+    <span id="reset" class="button">Reset</span>
+  </body>
+</html>

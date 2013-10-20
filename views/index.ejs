@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/buttons.css">
+     
+    <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="/javascripts/buttons.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+$(document).ready(function () {
+  $.get('/total', function (res) {
+    setTotal(res);
+  })
+  var count = 0;
+  var socket = io.connect(window.location.hostname);
+  var setCount = function (v) {
+    count = v;
+    $('#count').html(v);
+  };
+  var setTotal = function (v) {
+    $('#total').html(v);
+  };
+  var countUp = function () {
+    setCount(count + 1);
+    socket.emit('hee');
+  };
+  $('#hee-button').click(function () {
+    var audio = $('#hee-audio').get(0);
+    audio.currentTime = 0;
+    audio.play();
+    countUp();
+  });
+  socket.on('total', function (data) {
+    setTotal(data);
+  });
+  socket.on('reset', function (data) {
+    setCount(0);
+    setTotal(0);
+  });
+});
+    </script>
+  </head>
+  <body align="center">
+    <span id="hee-button" class="button-wrap"><a href="#" class="button button-circle button-primary"></a></span>
+    <audio id="hee-audio" src="/audio/hee.wav" type="audio/wav" preload="auto"></audio>
+    <p>
+      <span></span>
+      <span id="count">0</span>
+    </p>
+    <p>
+      <span></span>
+      <span id="total"></span>
+    </p>
+  </body>
+</html>
