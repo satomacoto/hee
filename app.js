@@ -34,9 +34,13 @@ if ('development' == app.get('env')) {
 }
 
 // routing
+var total = 0;
 app.get('/', routes.index);
 app.get('/admin', admin.index);
 app.get('/users', user.list);
+app.get('/total', function (req, res) {
+  res.send(JSON.stringify(total));
+});
 
 // socket.io
 http.globalAgent.maxSockets = 100;
@@ -51,13 +55,7 @@ io.configure(function () {
   io.set("polling duration", 10);
 });
 
-
-var total = 0;
-// TODO
-app.get('/total', function (req, res) {
-  res.send(total);
-});
-
+// socket.io
 io.sockets.on('connection', function (socket) {
   socket.volatile.emit('total', total);
   socket.on('hee', function (data) {
