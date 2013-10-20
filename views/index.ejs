@@ -2,6 +2,7 @@
 <html>
   <head>
     <title><%= title %></title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
     <link rel="stylesheet" href="/stylesheets/buttons.css">
@@ -28,9 +29,9 @@ $(document).ready(function () {
     socket.emit('hee');
   };
   $('#hee-button').click(function () {
-    var audio = $('#hee-audio').get(0);
-    audio.currentTime = 0;
-    audio.play();
+    // var audio = $('#hee-audio').get(0);
+    // audio.currentTime = 0;
+    // audio.play();
     countUp();
   });
   socket.on('total', function (data) {

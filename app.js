@@ -1,4 +1,4 @@
-
+;
 /**
  * Module dependencies.
  */
@@ -59,7 +59,7 @@ app.get('/total', function (req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
-  socket.emit('total', total);
+  socket.volatile.emit('total', total);
   socket.on('hee', function (data) {
     total++;
     socket.broadcast.emit('total', total);
@@ -67,7 +67,7 @@ io.sockets.on('connection', function (socket) {
   });
   socket.on('reset', function (data) {
     total = 0;
-    socket.broadcast.emit('reset', total);
-    socket.emit('reset', total);
+    socket.volatile.broadcast.emit('reset', total);
+    socket.volatile.emit('reset', total);
   });
 });
