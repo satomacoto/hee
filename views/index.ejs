@@ -29,8 +29,8 @@ $(document).ready(function () {
       $('<div class="bubble">へぇ</div>')
         .appendTo('body')
         .css('position', 'absolute')
-        .css('top', offset.top - 30)
-        .css('left', offset.left - 18)
+        .css('top', offset.top - 40 + Math.random() * 20)
+        .css('left', offset.left - 30 + Math.random() * 30)
         .animate({'top':'-=5px','opacity':'hide'}, {duration:'slow', easing:'swing'});      
     }
   };
@@ -56,16 +56,15 @@ $(document).ready(function () {
     </script>
   </head>
   <body align="center">
+    <p>
+      <span></span>
+      <span id="total">0</span>
+    </p>
     <span class="button-wrap"><a href="#" id="hee-button" class="button button-circle button-primary"></a></span>
     <audio id="hee-audio" src="/audio/hee.wav" type="audio/wav" preload="auto"></audio>
     <p>
       <span></span>
       <span id="count">0</span>
     </p>
-    <p>
-      <span></span>
-      <span id="total">0</span>
-    </p>
-
   </body>
 </html>
