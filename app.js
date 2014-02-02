@@ -50,10 +50,12 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 var io = require('socket.io').listen(server);
 
 // config for heroku
+/*
 io.configure(function () {
-  io.set("transports", ["xhr-polling"]);
+io.set("transports", ["xhr-polling"]);
   io.set("polling duration", 10);
 });
+*/
 
 // socket.io
 io.sockets.on('connection', function (socket) {
